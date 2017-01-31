@@ -8,9 +8,14 @@ package jpmx74checkers;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -20,18 +25,22 @@ import javafx.stage.Stage;
 public class Jpmx74Checkers extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) throws Exception{
         
-        StackPane root = new StackPane();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Runner.fxml"));
+        Parent root = loader.load(); 
+        RunnerController controller = loader.getController();
         
-        CheckerBoard board = new CheckerBoard(8, 8, 500, 500);
-        root.getChildren().add(board.build());
         
-        Scene scene = new Scene(root, 750, 750);
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
         
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setHeight(600);
+        stage.setWidth(500);
+        stage.show();
+        
+        controller.ready(stage);
     }
 
     /**

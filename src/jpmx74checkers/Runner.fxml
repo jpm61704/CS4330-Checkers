@@ -6,6 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jpmx74checkers.RunnerController">
-    
-</AnchorPane>
+<VBox id="vbox" fx:id="wrapper" fillWidth="true" prefHeight="529.0" prefWidth="602.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="jpmx74checkers.RunnerController">
+  <children>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="Grid">
+          <items>
+            <MenuItem mnemonicParsing="false" text="16x16" />
+            <MenuItem mnemonicParsing="false" text="10x10" />
+            <MenuItem mnemonicParsing="false" text="8x8" />
+            <MenuItem mnemonicParsing="false" text="3x3" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Colors">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Default" />
+            <MenuItem mnemonicParsing="false" text="Blue" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </children>
+</VBox>

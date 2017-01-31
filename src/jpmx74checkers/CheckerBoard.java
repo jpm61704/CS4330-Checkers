@@ -17,7 +17,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class CheckerBoard {
     private int numRows, numCols;
-    private double boardWidth, boardHeight, rectangleWidth, rectangleHeight;
+    private double boardWidth, boardHeight;
     private Color lightColor, darkColor;
     private AnchorPane board;
 
@@ -44,27 +44,32 @@ public class CheckerBoard {
        GridPane grid = new GridPane();
        board.getChildren().add(grid);
        
-       rectangleWidth = Math.ceil(boardWidth / numCols);
-       rectangleHeight = Math.ceil(boardHeight / numRows);
-        
+       boardWidth = Math.ceil(boardWidth / numCols);
+       boardHeight = Math.ceil(boardHeight / numRows);
+       
+       if(boardWidth < boardHeight){
+           boardHeight = boardWidth;
+       }else{
+           boardWidth = boardHeight;
+       }
+ 
        drawSquares(grid);
  
        return board;
     }
-    
-    private void drawSquares(GridPane grid){
    
-        
+
+    
+    private void drawSquares(GridPane grid){ 
         for(int i = 0; i < numRows; i++){
             for(int j = 0; j < numCols; j++){
                 Color color = nextColor(i + j);
-                Rectangle rect = new Rectangle(rectangleWidth, rectangleHeight, color);
+                Rectangle rect = new Rectangle(boardHeight, boardWidth, color);
                 grid.add(rect, j, i);
             }
-        }
-        
-        
+        }  
     }
+   
     
     private Color nextColor(int cell){
         if(cell % 2 == 0){
@@ -84,11 +89,11 @@ public class CheckerBoard {
         return numCols;
     }
 
-    public double getBoardWidth() {
+    public double getWidth() {
         return boardWidth;
     }
 
-    public double getBoardHeight() {
+    public double getHeight() {
         return boardHeight;
     }
 
@@ -100,13 +105,11 @@ public class CheckerBoard {
         return darkColor;
     }
     
-    public double getRectangleWidth(){
-        return 0;
-    }
+   
     
-    public double getRectangleHeight(){
-        return 0;
-    }
+    
+    
+    
 }
     
     
