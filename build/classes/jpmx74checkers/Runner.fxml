@@ -12,16 +12,16 @@
       <menus>
         <Menu mnemonicParsing="false" text="Grid">
           <items>
-            <MenuItem mnemonicParsing="false" text="16x16" />
-            <MenuItem mnemonicParsing="false" text="10x10" />
-            <MenuItem mnemonicParsing="false" text="8x8" />
-            <MenuItem mnemonicParsing="false" text="3x3" />
+            <MenuItem id="sixteenButton" mnemonicParsing="false" text="16x16" fx:id="sixteenButton" />
+            <MenuItem id="tenButton" mnemonicParsing="false" text="10x10" fx:id="tenButton" />
+            <MenuItem id="eightButton" mnemonicParsing="false" text="8x8" fx:id="eightButton" />
+            <MenuItem id="threeButton" mnemonicParsing="false" text="3x3" fx:id="threeButton" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Colors">
           <items>
-            <MenuItem mnemonicParsing="false" text="Default" />
-            <MenuItem mnemonicParsing="false" text="Blue" />
+            <MenuItem id="defaultColors" mnemonicParsing="false" text="Default" fx:id="defaultColorButton" />
+            <MenuItem id="blueColors" mnemonicParsing="false" text="Blue" fx:id="blueColorButton" />
           </items>
         </Menu>
       </menus>
