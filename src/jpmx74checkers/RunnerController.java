@@ -39,7 +39,6 @@ public class RunnerController implements Initializable {
     
     private Stage stage;
     CheckerBoard board;
-    EventHandler<ActionEvent> size16Handler, size10Handler, size8Handler, size3Handler, defaultColorHandler, blueColorHandler;
     ChangeListener<Number> resizeListener;
     
     
@@ -59,90 +58,8 @@ public class RunnerController implements Initializable {
    
             wrapper.getChildren().add(boardPane);
         };
-        this.size3Handler = (event) -> {
-            wrapper.getChildren().remove(boardPane);
-            
-            board = new CheckerBoard(
-                    3,
-                    3,
-                    wrapper.getWidth(),
-                    wrapper.getHeight() - MENU_SIZE,
-                    board.getLightColor(), 
-                    board.getDarkColor());
-            boardPane = board.build();
-   
-            wrapper.getChildren().add(boardPane);
-        };
-        this.size8Handler = (event) -> {
-            wrapper.getChildren().remove(boardPane);
-            
-            board = new CheckerBoard(
-                    8,
-                    8,
-                    wrapper.getWidth(),
-                    wrapper.getHeight() - MENU_SIZE,
-                    board.getLightColor(),
-                    board.getDarkColor());
-            boardPane = board.build();
-            
-            wrapper.getChildren().add(boardPane);
-        };
-        this.size10Handler = (event) -> {
-            wrapper.getChildren().remove(boardPane);
-            
-            board = new CheckerBoard(
-                    10,
-                    10,
-                    wrapper.getWidth(),
-                    wrapper.getHeight() - MENU_SIZE,
-                    board.getLightColor(),
-                    board.getDarkColor());
-            boardPane = board.build();
-            
-            wrapper.getChildren().add(boardPane);
-        };
-        this.size16Handler = (event) -> {
-            wrapper.getChildren().remove(boardPane);
-            
-            board = new CheckerBoard(
-                    16,
-                    16,
-                    wrapper.getWidth(),
-                    wrapper.getHeight() - MENU_SIZE,
-                    board.getLightColor(),
-                    board.getDarkColor());
-            boardPane = board.build();
-            
-            wrapper.getChildren().add(boardPane);
-        };
-        this.defaultColorHandler = (event) -> {
-            wrapper.getChildren().remove(boardPane);
-            
-            board = new CheckerBoard(
-                    board.getNumRows(),
-                    board.getNumCols(),
-                    wrapper.getWidth(),
-                    wrapper.getHeight() - MENU_SIZE,
-                    Color.RED,
-                    Color.BLACK);
-            boardPane = board.build();
-            
-            wrapper.getChildren().add(boardPane);
-        };
-        this.blueColorHandler = (event) -> {
-            wrapper.getChildren().remove(boardPane);
-            
-            board = new CheckerBoard(
-                    board.getNumRows(),
-                    board.getNumCols(),
-                    wrapper.getWidth(),
-                    wrapper.getHeight() - MENU_SIZE,
-                    Color.SKYBLUE,
-                    Color.DARKBLUE);
-            boardPane = board.build();
-            
-            wrapper.getChildren().add(boardPane);
-        };
+       
+       
     }
     
     /**
@@ -160,13 +77,13 @@ public class RunnerController implements Initializable {
         boardPane = board.build();
         wrapper.getChildren().add(boardPane);
         
-        sixteenButton.setOnAction(size16Handler);
-        tenButton.setOnAction(size10Handler);
-        eightButton.setOnAction(size8Handler);
-        threeButton.setOnAction(size3Handler);
+        sixteenButton.setOnAction(e -> changeDimensions(16, 16));
+        tenButton.setOnAction(e -> changeDimensions(10, 10));
+        eightButton.setOnAction(e -> changeDimensions(8, 8));
+        threeButton.setOnAction(e -> changeDimensions(3, 3));
         
-        blueColorButton.setOnAction(blueColorHandler);
-        defaultColorButton.setOnAction(defaultColorHandler);
+        blueColorButton.setOnAction(e -> changeColors(Color.LIGHTBLUE, Color.DARKBLUE));
+        defaultColorButton.setOnAction(e -> changeColors(Color.RED, Color.BLACK));
           
         scene.widthProperty().addListener(resizeListener);
         scene.heightProperty().addListener(resizeListener);
@@ -175,7 +92,35 @@ public class RunnerController implements Initializable {
     }
     
     
+    private void changeDimensions(int rows, int cols){
+        wrapper.getChildren().remove(boardPane);
+            
+         board = new CheckerBoard(
+                    rows,
+                    cols,
+                    wrapper.getWidth(),
+                    wrapper.getHeight() - MENU_SIZE,
+                    board.getLightColor(),
+                    board.getDarkColor());
+        boardPane = board.build();
+            
+        wrapper.getChildren().add(boardPane);
+    }
     
+    private void changeColors(Color lightColor, Color darkColor){
+            wrapper.getChildren().remove(boardPane);
+            
+            board = new CheckerBoard(
+                    board.getNumRows(),
+                    board.getNumCols(),
+                    wrapper.getWidth(),
+                    wrapper.getHeight() - MENU_SIZE,
+                    lightColor,
+                    darkColor);
+            boardPane = board.build();
+            
+            wrapper.getChildren().add(boardPane);
+    }
     
     
 }
